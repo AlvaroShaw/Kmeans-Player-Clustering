@@ -477,6 +477,41 @@
 
     observerElements.forEach((el) => observer.observe(el));
   });
+  function scaleIframes() {
+    const wrappers = document.querySelectorAll('.interactive-embed-wrapper');
+    
+    wrappers.forEach(wrapper => {
+      const iframe = wrapper.querySelector('iframe');
+      if (!iframe) return;
+      
+      // The beautiful, spacious desktop width we want to preserve
+      const desktopWidth = 950; 
+      const currentWidth = wrapper.clientWidth;
+      
+      if (currentWidth < desktopWidth) {
+        // 1. Calculate exactly how much we need to "zoom out" to fit the phone
+        const scale = currentWidth / desktopWidth;
+        const originalHeight = parseInt(iframe.getAttribute('height')) || 850;
+        
+        // 2. Force the graph to render at desktop size, then shrink it like a photo
+        iframe.style.width = desktopWidth + 'px';
+        iframe.style.transform = `scale(${scale})`;
+        iframe.style.transformOrigin = 'top left';
+        
+        // 3. Remove the massive blank space left behind by the shrunken iframe
+        iframe.style.marginBottom = `-${originalHeight * (1 - scale)}px`;
+      } else {
+        // Reset to normal on large desktop screens
+        iframe.style.width = '100%';
+        iframe.style.transform = 'none';
+        iframe.style.marginBottom = '0px';
+      }
+    });
+  }
+
+  // Run the math when the page loads, and if the user rotates their phone
+  window.addEventListener('DOMContentLoaded', scaleIframes);
+  window.addEventListener('resize', scaleIframes);
 </script>
 
 </body>
