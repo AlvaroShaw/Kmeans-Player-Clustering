@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Path to Player Recruitment Beyond Traditional Positions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Mustard Yellow & High-Contrast Dark Text Theme */
+    --bg-dark: #e8b923;       /* Mustard master background */
+    --bg-light: #ffffff;      /* Pure white for embedded wrappers */
+    --ink: #111111;           /* Deep black for main text */
+    --ink-muted: #444444;     /* Dark grey for secondary text */
+    --accent: #111111;        /* Black for bold accents/overlines */
+    --border: rgba(0, 0, 0, 0.15); /* Subtle dark border for dividers */
+    
+    --serif: 'Lora', serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--bg-dark);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+
+  section {
+    width: 100%;
+    padding: 80px 5vw;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* White dots on the mustard background */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: #ffffff; /* White italicized text pops off the mustard */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--ink-muted);
+    max-width: 700px;
+    line-height: 1.8;
+  }
+
+  .section-overline {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 16px;
+  }
+
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .section-heading em { 
+    font-style: italic; 
+    color: #ffffff; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .section-body {
+    font-size: 1.1rem;
+    color: var(--ink);
+    max-width: 800px; 
+    margin-bottom: 2rem;
+  }
+
+  .section-body p + p { margin-top: 1.5em; }
+  .section-body strong { font-weight: 700; color: #000000; } /* Black bold text */
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 auto;
+    max-width: 84vw;
+  }
+
+  .interactive-embed-wrapper {
+    background: var(--bg-light); 
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent); 
+    border-radius: 8px;
+    margin: 4rem 0;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .interactive-embed-wrapper iframe {
+    width: 100%;
+    max-width: 950px;
+    border: none;
+    background: transparent; 
+    padding-top: 2rem;
+  }
+
+  .embed-caption {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.03); 
+  }
+
+  .embed-caption strong { 
+    color: var(--accent); 
+    font-weight: 700; 
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  footer {
+    width: 100%;
+    padding: 60px 5vw;
+    border-top: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.05); /* Slightly darker mustard tone for the footer */
+  }
+
+  .footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .footer-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    line-height: 1.8;
+  }
+
+  .footer-right strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 60px 5vw; }
+    .hero { padding: 80px 5vw; }
+    .footer-container { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container hero-content fade-up">
+    <h1>A path to player recruitment beyond <em>positional labels</em></h1>
+    <div class="hero-sub">
+      <p>In football, players have conventionally been classified according to their position on the pitch. This article shifts the focus away from conventional classifications to reflect the evolving, dynamic nature of modern football by clustering players based on stylistic similarities.</p>
+    </div>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="container fade-up">
+    <div class="section-overline">Introduction</div>
+    <h2 class="section-heading">Limitations of Traditional <em>Football Positions</em></h2>
+    <div class="section-body">
+      <p>In football, players have conventionally been classified according to their position on the pitch: goalkeepers, defenders, midfielders, and forwards. Within these categories, there are further subdivisions based on pitch location (left, right, centre, etc) and the team’s formation. However, these broad classifications do not fully capture the player’s true role on the pitch.</p>
+      
+      <p>The position ‘Centre Forward’ can range in playing styles and responsibilities; Some centre forwards function as False 9s, contributing creatively and participating in the build-up phase. Their involvement is not limited to shooting and scoring; instead, they also play a key part in setting up offensive plays. In contrast, a poaching forward tends to focus primarily on finishing, staying close to the opponent’s box and seeking out scoring opportunities, with less emphasis on involvement in the build-up play.</p>
+      
+      <p>During scouting and recruitment, it is not enough to simply look at a player’s position. Players must fit into dynamic systems outlined by the manager, which place distinct demands on each position. Understanding these tactical requirements is crucial when evaluating potential recruits.</p>
+      
+      <p>My objective is to address this gap by leveraging data analytics to group players according to comparable playing styles using stylistic metrics; to efficiently filter through any players that do not fit a team. Allowing clubs to recruit or find replacements that stylistically and tactically make sense. This approach shifts the focus away from conventional classifications to reflect the evolving, dynamic nature of modern football.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="methodology">
+  <div class="container fade-up">
+    <div class="section-overline">Methodology</div>
+    <h2 class="section-heading">Statistical Concept & <em>Clustering</em></h2>
+    
+    <div class="section-body">
+      <p>In machine learning this is an unsupervised learning problem, we are looking to categorise various observations (players) given a number of distinct features without any clear labels (we do not pre label an observation as a support forward for example). It simply needs to attempt to subcategorise them given the features. This comes with some challenges, as there is no predictive aim (no Y) we cannot easily observe the performance of the model.</p>
+      
+      <p><strong>Clustering</strong><br>
+      Clustering looks for homogeneous subgroups among the observations (similarities rather than data variance). In this article I use K-means clustering as my method (K-means clustering partitions observations into a pre-specified number of clusters). Alternatively hierarchical clustering is an option if we’d rather not pre-specify k clusters/do not know how many clusters we want (not specifying 4 main types of forwards, instead it may find 5 to 6 clusters to categorise all forwards).</p>
+
+      <p>However, in this case we can make some safe assumptions about football and cluster into 4 main types of forwards (the false 9, poacher, the target man, and hybrid). By using the Elbow Method and Silhouette Score we can determine 3-4 clusters works well in this scenario.</p>
+
+      <p>Beginning K-means clustering, the algorithm will assign each observation to a random K cluster. Once calculating the cluster centroid, it will then re-assign each observation based on the closest kth (in this case 1 to 4) cluster centroid (defined using Euclidean distance). Re-iterating this until the clusters no longer change; This is a nice and intuitive method of creating clusters. Due to the variability when randomly assigning observations to a cluster to begin with, outputs often look different each time, therefore should be run a couple times to conclude a common pattern. Fortunately, this is covered in the scikit-learn code by using <code>n_init=10</code> which runs k-means 10 times and picks the lowest error (inertia) clusters.</p>
+
+      <p><strong>Considerations for K-means</strong><br>
+      While K-means clustering is a hard clustering technique—meaning each player is assigned exclusively to one cluster—it is important to acknowledge that footballers often exhibit a fluidity of playing styles. Players are not always confined to a single role on the pitch; instead, they may span multiple categories. In such scenarios, a Gaussian Mixture Model (GMM) clustering approach could be more appropriate. Unlike K-means, GMM does not rely on rigid cluster centroids and enables clusters to overlap, offering a more complex grouping that reflects the reality of players adopting multiple styles within their roles (however can be susceptible to high variance which causes the model to be extremely sensitive to minor changes in the training data).</p>
+
+      <p>From a scouting perspective, whilst it is acknowledged that every player exhibits their own unique variations, K-means provides a more practical approach for grouping players allowing us to see which players perform which role better without subjectivity (overlaps), high sensitivity and importantly, simplifies visualisations to present players who are most like one another, facilitating clearer comparisons and more effective communication of findings (though if the scouting department value pinpointing adaptable players GMM might be the better option).</p>
+
+      <p>Another limitation would be that K-means relies on evenly numbered clusters (an equal amount of each type of striker) because it attempts to minimize the within-cluster sum of squares, it gives more “weight” to larger clusters. We try to avoid this by including as many competitions as possible from different countries free data allows, to include various players and styles of play.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="features">
+  <div class="container fade-up">
+    <div class="section-overline">Feature Selection</div>
+    <h2 class="section-heading">Choosing features & <em>The Data</em></h2>
+    
+    <div class="section-body">
+      <p>K-means is designed to work in multi-dimensional spaces therefore can handle many features, however which features and how many features should be included for the categorisation of forwards?</p>
+
+      <p><strong>Style metrics vs Performance metrics</strong><br>
+      I am attempting to simply look at stylistic commonalities between players and not their performance. Introducing performance metrics such as xG and xA would add noise, causing the model to potentially cluster players who are outputting at a similar rate rather than clustering them based on their style of play. An example of a style metric would be number of dribbles or possession %.</p>
+
+      <p>The stylistic metrics I have used are touches, touches in opposition box, dribbles, progressive carries, shot attempts, chances created, aerials duels, tackles/duels, passes, crosses, recoveries, interceptions. With some processed into the following ratio metrics: Box occupancy, pass share, defensive work rate and shot touch ratio.</p>
+
+      <p><strong>The Data</strong><br>
+      I used the open source statsbomb repository to provide players and high-quality event data. 68 players, 11 seasons and over 260 matches were utilized post filters. While 2016 is an arbitrary year to start, from a footballing perspective it was the year Pep Guardiola joined Man City marking a tactical shift in modern football coined “The Pep Effect”; With limited complete event data available pre 2010s, 2016 seemed like a reasonable choice as a cut off year.</p>
+
+      <p>I have filtered down to 9 competitions (Bundesliga, Champions League, La Liga, Ligue 1, MLS, Premier League, Liga Professional, UEFA Europa League, and Serie A) from 2016 and onwards. Players must have played at least 180 minutes and operated as a forward (Centre Forward, Left Centre Forward, Right Centre Forward, Secondary Striker) excluding Wingers. A minute calculation script was added to ensure that all metrics accurately represent their true per 90 performances (starting 11, red cards and substitutions accounted for to avoid averaging or assumption of play time).</p>
+
+      <p>As a preference, data in the defensive third has been deliberately excluded. This has been made to minimise the influence of tactical approaches and situational events that lead forwards to operate in defensive areas of the pitch. Defensive third events might result in players accumulating metrics that do not truly reflect their attacking style or natural tendencies in advanced positions. The focus of the article remains on capturing stylistic attributes related to forward play, reducing potentially misleading noise in the dataset. This approach ensures that the clustering results are more representative of each player's genuine attacking profile, rather than being distorted by actions performed in less relevant zones of the pitch.</p>
+
+      <p><strong>Final Features</strong><br>
+      Firstly, the data was scaled to standardize all features so that none dominated the other. Initially I looked to incorporate only volume metrics (counts per 90) however found that it struggled to separate observations based on style, due to Neymar and Messi’s domination in volume metrics causing extreme outliers.</p>
+
+      <p>I therefore feature engineered some into ratio metrics to better separate players based on their roles using: Box occupancy (touches in box p90 / touches p90), Pass share (passes p90 / touches p90), Defensive work rate (tackles p90 + interceptions p90 + recoveries p90), and Shot touch ratio (shots p90 / touches p90). This did a much better job of partitioning players compared to counts of touches per 90, touches in opponent box per 90, passes per 90, shots per 90, etc.</p>
+
+      <p>8 final features were used for the clustering: dribbles per 90, aerial duels per 90, progressive carries per 90, chances created per 90, box occupancy, pass share, defensive work rate and shot touch ratio.</p>
+    </div>
+
+    <div class="interactive-embed-wrapper fade-up">
+      <iframe src="feature_correlation_matrix_mustard.html" height="920" scrolling="no"></iframe>
+      <div class="embed-caption">
+        The features selected show a low pairwise correlation, verifying the diverse set of independent player attributes (volume, efficiency, defence, and creation) rather than redundant metrics. With only a few related skills such as progressive carries and dribbles showing a reasonable correlation as expected. High correlation matrices indicate a double counting problem which show a bias towards a certain action and a lack of unique features that add new dimensions to a player’s profile. Overall, the matrix reveals orthogonal features, creating richer clusters.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="visualization">
+  <div class="container fade-up">
+    <div class="section-overline">Dimensionality Reduction</div>
+    <h2 class="section-heading">Visualizing K-means</h2>
+    
+    <div class="section-body">
+      <p>Though mathematically K-means comfortably works in multi-dimensional spaces, it is difficult to visualize the output, therefore after the clusters have been labelled (to avoid loss of information) PCA will produce a 2D dimensionality reduction to better visualize the results. PCA (principal component analysis) looks for a low-dimensional representation of the observations that explains a good fraction of the variance.</p>
+    </div>
+
+    <div class="interactive-embed-wrapper fade-up">
+      <iframe src="player_clusters_biplot_clean.html" height="850" scrolling="no"></iframe>
+      <div class="embed-caption">
+        Yellow arrows illustrate loadings of each feature. <strong>Cluster 0</strong> = Poacher, <strong>Cluster 1</strong> = Hybrid, <strong>Cluster 2</strong> = False 9, <strong>Cluster 3</strong> = Target Man. The players labelled are the top 3 extreme examples of each playing style, deviating furthest from their cluster centroid, those who best define their cluster (the most creative creator, the most defensive workhorse, etc.)
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="analysis">
+  <div class="container fade-up">
+    <div class="section-overline">Analysis</div>
+    <h2 class="section-heading">What does the <em>plot tell us?</em></h2>
+    
+    <div class="section-body">
+      <p>By examining each cluster in detail, we see how forwards can be grouped based on their unique playing styles—from the adaptable hybrid, the creative false 9, the opportunistic poacher, and the physically dominant target man.</p>
+
+      <p><strong>Cluster 1: Hybrid Forwards</strong><br>
+      Cluster 1 forwards are identified as hybrid players. In the PCA biplot, these players appear centrally located, meaning their performance metrics are balanced across all measured features. This central position highlights their versatility: hybrid forwards contribute evenly to various aspects of play, attacking, defending, creating chances, and supporting. They do not specialise in a single area, but instead excel in adapting to multiple roles, making them valuable for teams seeking a flexible attacking option.</p>
+
+      <p><strong>Cluster 2: False 9 Forwards</strong><br>
+      In contrast to hybrid forwards, Cluster 2 represents players who exhibit a different set of strengths. Cluster 2 includes players who fit the profile of a false 9 forward—a striker who frequently drops deep into midfield rather than staying near the opponent’s goal. False 9s play a key role in build-up play, helping to link midfield and attack. These players have high ratios of passes and dribbles per 90 minutes, demonstrating their involvement in creating opportunities and progressing the ball. The biplot reveals cluster 2 being heavily skewed towards those features. However, they tend to have low box occupancy ratios (a metric indicating how often a player is present in the penalty box), fewer shots per touch, and reduced participation in aerial duels. This suggests that false 9s prioritise playmaking and ball movement over traditional goal-scoring and physical contests inside the box.</p>
+
+      <p><strong>Cluster 0: Poacher Forwards</strong><br>
+      Moving from the creative qualities of false 9s, Cluster 0 highlights a more traditional goal-scoring approach. Cluster 0 is comprised of poacher forwards, who are known for their instinctive goal-scoring ability. Poachers spend most of their time in and around the opponent’s box, seeking opportunities to finish attacking moves. They show high box occupancy ratios, frequently positioned in the box ready to receive passes and attempt shots. Poachers tend to focus on scoring rather than dropping deep and contributing to build-up play, making them specialists in exploiting space and capitalising on goal-scoring chances.</p>
+
+      <p><strong>Cluster 3: Target Men Forwards</strong><br>
+      While poachers excel at finding space and scoring inside the box, Cluster 3 features players with a skill set focused on physical presence and aerial ability. Cluster 3 indicate target men—strikers who are renowned for their strength in aerial duels and hold-up play. Typically, aerial duels following crosses or long passes are where target men use their height and physicality to win possession. These players record high aerial duels per 90 minutes, underscoring their effectiveness at challenging defenders and providing a reliable outlet for teammates. Additionally, target men excel in hold-up play, meaning they can control the ball under pressure and bring others into the attack, often allowing their team to advance up the field and create scoring opportunities. Their ability to win headers and retain possession makes them pivotal in teams that favour direct attacking strategies.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="case-study">
+  <div class="container fade-up">
+    <div class="section-overline">Case Study</div>
+    <h2 class="section-heading">Evaluation</h2>
+    
+    <div class="section-body">
+      <p>Many people remember Neymar as a dominant winger with exceptional 1v1 abilities during his time at Barcelona, therefore wouldn’t characterize him as a “false 9” forward, since Messi already filled that role. However, our data mostly included Neymar’s playing time during his stay at PSG which saw a much more versatile attacking forward who played a stylistically similar role as a false 9, with build-up play involvement and huge outlier values in progressive carries, chances created, touches and passes per 90, only rivalled by Messi himself.</p>
+    </div>
+
+    <div class="interactive-embed-wrapper fade-up">
+      <iframe src="player_clusters_biplot_clean_all.html" height="850" scrolling="no"></iframe>
+      <div class="embed-caption">
+        All players labelled. Zoom in to any observation to observe neighbouring players.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="discussion">
+  <div class="container fade-up">
+    <div class="section-overline">Discussion</div>
+    <h2 class="section-heading">Addressing the <em>Hybrid Density</em></h2>
+    
+    <div class="section-body">
+      <p>When evaluating the clustering results, it became evident that a significant number of players were grouped within the hybrid striker cluster. Notable examples include Karim Benzema, Hugo Ekitike, Antoine Griezmann and Diego Costa. While these players are undeniably well-rounded strikers, each exhibits subtle differences in their playing style.</p>
+      
+      <p>The hybrid cluster seemed to encompass strikers who did not stand out in any specific characteristic to be pushed into another cluster, yet it also included world-class strikers who excel across all attributes. This highlights an important consideration: the clustering technique should not be viewed as a tool for filtering players based on quality. Instead, it offers a means of identifying and understanding their tendencies as a striker, providing insight into the diversity of roles within this group.</p>
+
+      <p>Another important consideration in interpreting these results is the impact of the dataset's size and composition. The relatively small sample size used in this analysis may have influenced the outcomes, as a significant proportion of the matches included in StatsBombs open data are high-profile, world-class games. This selection bias could inadvertently have skewed the clustering results, particularly by increasing the representation and influence of hybrid or exceptionally well-rounded strikers within the dataset. As a result, the hybrid cluster may appear more prominent or weighted than it might in a broader, more varied dataset.</p>
+
+      <p><strong>Further Adjustments</strong><br>
+      I initially questioned the capacity to distinctly separate target men forwards from poacher forwards. One potential enhancement could involve introducing variables such as the number of aerial duels won, or the number of attempted headers, to better differentiate between a classic target man and a more physically imposing poacher. However, believe that these features lean towards potential performance metrics rather than stylistic metrics, shifting the focus of the clustering algorithm.</p>
+      
+      <p>To provide more reliable outputs the number of minutes played filter could have been increased from 180 minutes, however for the illustrative purposes of the article found that too few players made it through such a rigid filter on a small-scale dataset, with only 28 forwards presented when increased to at least 300 minutes played.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="conclusion">
+  <div class="container fade-up">
+    <div class="section-overline">Conclusion</div>
+    <h2 class="section-heading">Practical Application in <em>Recruitment</em></h2>
+    
+    <div class="section-body">
+      <p>By systematically categorising players based on objective style metrics, analysts can move beyond traditional labels. But how can it be used? This technique can be applied in several key areas to strengthen decision-making within a club without time consuming expert labelling.</p>
+
+      <p><strong>Recruiting Shortlists</strong><br>
+      By grouping players according to their stylistic attributes, clubs can efficiently generate recruiting shortlists. This approach allows for targeted identification of individuals whose playing styles align with the requirements of the team, making the process of scouting new talent efficient and less reliant on subjective assessments.</p>
+
+      <p><strong>Role Similarities in Player Replacement</strong><br>
+      By comparing the stylistic profiles of current squad members and potential recruits, clubs can ensure that replacements are well-suited to fill specific roles, maintaining tactical coherence and continuity within the team.</p>
+
+      <p><strong>Assessing Squad Balance</strong><br>
+      Evaluating the distribution of player roles within a squad is essential for achieving balance. Clustering allows clubs to analyse whether the team possesses a suitable mix of player types, enabling informed adjustments to improve overall squad harmony and effectiveness when adjusting tactics.</p>
+
+      <p><strong>Cohesion Analysis</strong><br>
+      Clustering facilitates cohesion analysis; by using objective data, clubs can quickly assess how well players complement each other within the squad, supporting decisions that foster greater teamwork and tactical unity.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container fade-up">
+    <div class="footer-left">
+      <div class="footer-title">Stylistically Clustering Footballers</div>
+      <p>Football Analytics &nbsp;·&nbsp; K-Means Clustering Framework<br>
+      Data: StatsBomb (2016-2025)</p>
+    </div>
+    
+    <div class="footer-right">
+      <p>By Alvaro Shaw<br>
+      <strong>Data Analysis Project</strong></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observerElements = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); 
+        }
+      });
+    }, { 
+      threshold: 0.1, 
+      rootMargin: "0px 0px -20px 0px"
+    });
+
+    observerElements.forEach((el) => observer.observe(el));
+  });
+</script>
+
+</body>
+</html>
